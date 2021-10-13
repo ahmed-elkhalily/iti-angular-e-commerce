@@ -1,25 +1,25 @@
 <div class="card h-100">
   <img
-    [src]="cardItems.image"
+    [src]="productItems.image"
     class="card-img-top"
     style="width: 50%; margin: 0 auto"
   />
   <div class="card-body">
-    <h5 class="card-title">{{ cardItems.title }}</h5>
+    <h5 class="card-title">{{ productItems.title }}</h5>
     <p class="card-text">
-      {{ cardItems.description }}
+      {{ productItems.description }}
     </p>
     <p class="card-text bg-secondary">
-      {{ cardItems.category }}
+      {{ productItems.category }}
     </p>
     <p class="card-text bg-danger">
-      {{ cardItems.price | currency: "EGY " }}
+      {{ productItems.price | currency: "EGY " }}
     </p>
-    <button class="btn btn-success" (click)="goToPage(cardItems)">
+    <button class="btn btn-success" (click)="goToPage(productItems)">
       go to your page
     </button>
     <!-- addToCartItem -->
-    <button class="btn btn-primary" (click)="addToCartItem()">
+    <button class="btn btn-primary" (click)="addToCartItem(productItems.id)">
       + Add To Cart
     </button>
   </div>

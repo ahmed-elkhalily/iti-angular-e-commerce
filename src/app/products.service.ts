@@ -10,16 +10,21 @@ export class ProductsService {
   cartItemsCounter = this.cartCounter.asObservable();
   private productList = new BehaviorSubject([]);
   productListItems = this.productList.asObservable();
+  private cartItems = new BehaviorSubject([]);
+  cartItemsList = this.cartItems.asObservable();
 
   constructor(private http: HttpClient) {}
 
   getProductList() {
     return this.http.get('https://fakestoreapi.com/products');
   }
+
   fillProductList(products: []) {
     this.productList.next(products);
   }
-  addItemToCart(newCartCounter: number) {
+  addItemToCart(newCartCounter: number, item) {
     this.cartCounter.next(newCartCounter);
+    item[0].quantity = 1;
+    this.cartItems.next(this.cartItems.getValue().concat(...item));
   }
 }

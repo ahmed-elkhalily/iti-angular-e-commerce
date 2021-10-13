@@ -1,0 +1,35 @@
+<div class="container">
+  <table class="table table-hover" *ngIf="cartItems.length !== 0; elseBlock">
+    <thead>
+      <tr>
+        <th class="text-center" scope="col">#</th>
+        <th class="text-center" scope="col-2">name</th>
+        <th class="text-center" scope="col">price</th>
+        <th class="text-center" scope="col">Quantity</th>
+        <th class="text-center text-danger" scope="col">delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cartItem of cartItems">
+        <th scope="row">{{ cartItem["id"] }}</th>
+        <td class="text-center">{{ cartItem["title"] }}</td>
+        <td class="text-center">{{ cartItem["price"] }}</td>
+        <td class="text-center">
+          <button class="btn btn-primary btn-sm">+</button>
+          {{ cartItem["quantity"] }}
+          <button class="btn btn-secondary btn-sm">-</button>
+        </td>
+        <td class="text-center">
+          <button class="btn btn-sm btn-danger">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+              <path
+                d="M10.975 8 11 7.5a6.45 6.45 0 0 0-.181-1.5h5.993l-.564 2h-5.273zM8.5 18a1.5 1.5 0 1 0 .001 3.001A1.5 1.5 0 0 0 8.5 18zM19.805 3l-3.432 12H5.945l-.455-1.083A6.59 6.59 0 0 1 4.5 14a6.49 6.49 0 0 1-1.191-.114L4.615 17h13.239l3.474-12h1.929L24 3h-4.195zM13.5 18a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM9 7.5A4.501 4.501 0 1 1 4.5 3C6.982 3 9 5.015 9 7.5zM7 7H2v1h5V7z"
+              />
+            </svg>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div #elseBlock>cart field is empty you can add to it!</div>
+</div>

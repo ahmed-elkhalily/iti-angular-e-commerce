@@ -8,8 +8,10 @@ import { ProductsService } from '../products.service';
   styleUrls: ['./card.component.scss'],
 })
 export class CardComponent implements OnInit {
-  @Input() cardItems: any;
-  cartCounter;
+  @Input() productItems: any;
+  cartCounter: number;
+  products: [];
+  cartItem: [] = [];
   constructor(
     private router: Router,
     private productService: ProductsService
@@ -17,13 +19,20 @@ export class CardComponent implements OnInit {
   goToPage(event: any): void {
     this.router.navigate([`card/${event.id}`]);
   }
-  addToCartItem() {
+  addToCartItem(id: number) {
     this.cartCounter += 1;
-    this.productService.addItemToCart(this.cartCounter);
+    console.log(this.products.filter((item) => item['id'] == id));
+    this.productService.addItemToCart(
+      this.cartCounter,
+      this.products.filter((item) => item['id'] == id)
+    );
   }
   ngOnInit(): void {
     this.productService.cartItemsCounter.subscribe(
       (item) => (this.cartCounter = item)
+    );
+    this.productService.productListItems.subscribe(
+      (item: []) => (this.products = item)
     );
   }
 }
