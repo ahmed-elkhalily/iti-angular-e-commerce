@@ -1,0 +1,26 @@
+<div class="card h-100">
+  <img
+    [src]="cardItems.image"
+    class="card-img-top"
+    style="width: 50%; margin: 0 auto"
+  />
+  <div class="card-body">
+    <h5 class="card-title">{{ cardItems.title }}</h5>
+    <p class="card-text">
+      {{ cardItems.description }}
+    </p>
+    <p class="card-text bg-secondary">
+      {{ cardItems.category }}
+    </p>
+    <p class="card-text bg-danger">
+      {{ cardItems.price | currency: "EGY " }}
+    </p>
+    <button class="btn btn-success" (click)="goToPage(cardItems)">
+      go to your page
+    </button>
+    <!-- addToCartItem -->
+    <button class="btn btn-primary" (click)="addToCartItem()">
+      + Add To Cart
+    </button>
+  </div>
+</div>
