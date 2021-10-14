@@ -1,10 +1,17 @@
-<div class="card" style="width: 18rem">
+<div class="card" style="width: 18rem" *ngIf="item.length !== 0; else waitEle">
   <img [src]="item.image" class="card-img-top" alt="..." />
   <div class="card-body">
     <h5 class="card-title">{{ item.title }}</h5>
     <p class="card-text">
       {{ item.description }}
     </p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <a href="#" class="btn btn-primary" (click)="addToCart(item)"
+      >+ Add To Cart</a
+    >
   </div>
 </div>
+<ng-template #waitEle>
+  <div class="text-secondary text-sm text-center">
+    <small>...loading</small>
+  </div>
+</ng-template>

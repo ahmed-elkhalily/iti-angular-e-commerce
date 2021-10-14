@@ -21,7 +21,6 @@ export class CardComponent implements OnInit {
   }
   addToCartItem(id: number) {
     this.cartCounter += 1;
-    console.log(this.products.filter((item) => item['id'] == id));
     this.productService.addItemToCart(
       this.cartCounter,
       this.products.filter((item) => item['id'] == id)
