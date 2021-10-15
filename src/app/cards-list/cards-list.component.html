@@ -1,7 +1,12 @@
 <div class="container">
-  <div class="row row-cols-1 row-cols-md-3 g-4">
-    <div class="col" *ngFor="let card of productListItems">
-      <app-card [productItems]="card"></app-card>
+  <div class="row">
+    <div class="w-75 row">
+      <div *ngFor="let card of productListItems">
+        <app-card [productItems]="card"></app-card>
+      </div>
+    </div>
+    <div class="w-25">
+      <app-wishlist></app-wishlist>
     </div>
   </div>
 </div>
