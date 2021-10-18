@@ -1,5 +1,6 @@
+import { Store } from '@ngrx/store';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, JsonpClientBackend } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -13,9 +14,13 @@ export class ProductsService {
   private cartItems = new BehaviorSubject({});
   cartItemsList = this.cartItems.asObservable();
   TotalCash = new BehaviorSubject(0);
-  private totalCashObserval = this.TotalCash.asObservable();
+  totalCashVal = this.TotalCash.asObservable();
+  private isLoading = new BehaviorSubject(true);
+  isProductLoading = this.isLoading.asObservable();
+  private wishList = new BehaviorSubject([]);
+  wishListMap = this.wishList.asObservable();
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private store: Store<any>) {}
 
   getProductList() {
     return this.http.get('https://fakestoreapi.com/products');
@@ -24,28 +29,37 @@ export class ProductsService {
     return this.http.get(`https://fakestoreapi.com/products/${id}`);
   }
   fillProductList(products: []) {
+    this.store.select('wishList').subscribe((data) => {
+      const mappedData = data.map((item: object): [] => item['id']);
+      this.wishList.next(mappedData);
+    });
     this.productList.next(products);
   }
+  updateLoading(state: boolean) {
+    this.isLoading.next(state);
+  }
 
-  addItemToCart(newCartCounter: number, item) {
+  addItemToCart(newCartCounter: number, item: Array<any>) {
     this.cartCounter.next(newCartCounter);
     let obj = {};
+    let totalCach: number;
     let itemIndex = item[0].id;
-    let totalCach = this.TotalCash.getValue();
-
-    if (itemIndex in this.cartItems.getValue()) {
-      obj = this.cartItems.getValue();
-      obj[itemIndex].quantity++;
-      obj[itemIndex].totalPrice =
-        obj[itemIndex].price * obj[itemIndex].quantity;
+    obj[itemIndex] = item[0];
+    obj[itemIndex].quantity++;
+    obj[itemIndex].totalPrice = item[0].price * item[0].quantity;
+    this.cartItems.next({
+      ...this.cartItems.getValue(),
+      ...obj,
+    });
+    if (newCartCounter == 1) {
+      console.log(newCartCounter);
+      totalCach = obj[itemIndex]['totalPrice'];
+      this.TotalCash.next(totalCach);
     } else {
-      item[0].quantity = 1;
-      item[0].totalPrice = item[0].price;
-      obj[itemIndex] = item[0];
+      totalCach = this.TotalCash.getValue();
+      totalCach += obj[itemIndex]['totalPrice'];
+      this.TotalCash.next(totalCach);
     }
-    this.cartItems.next({ ...this.cartItems.getValue(), ...obj });
-    totalCach += obj[itemIndex].price;
-    this.TotalCash.next(totalCach);
   }
 
   innerTotalPriceAndQuantity(id: number, inc: boolean = true) {

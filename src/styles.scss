@@ -2,3 +2,35 @@
 
 /* Importing Bootstrap SCSS file. */
 @import "~bootstrap/scss/bootstrap";
+
+:root {
+  --red: #ff0075;
+  --blue: #1597e5;
+  --sec: #a7bbc7;
+  --blue-link: #172774;
+  --red-alert: #ff2626;
+  font-family: monospace;
+}
+.red {
+  color: var(--red);
+  fill: var(--red);
+}
+.blue {
+  color: var(--blue);
+  fill: var(--blue);
+}
+
+.sec {
+  color: var(--sec);
+  fill: var(--sec);
+}
+body {
+  font-family: monospace;
+}
+
+svg {
+  fill: currentColor;
+  path {
+    color: inherit;
+  }
+}

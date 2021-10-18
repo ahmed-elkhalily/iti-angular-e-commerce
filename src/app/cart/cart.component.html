@@ -19,14 +19,14 @@
         <td class="text-center">{{ cartItem.value["totalPrice"] }}</td>
         <td class="text-center">
           <button
-            class="btn btn-primary btn-sm"
+            class="cart__btn blue"
             (click)="quantityInc(cartItem.value['id'])"
           >
             +
           </button>
           {{ cartItem.value["quantity"] }}
           <button
-            class="btn btn-secondary btn-sm"
+            class="cart__btn red"
             (click)="quantityDec(cartItem.value['id'])"
           >
             -
@@ -34,7 +34,7 @@
         </td>
         <td class="text-center">
           <button
-            class="btn btn-sm btn-danger"
+            class="cart__btn cart__btn-icon red"
             (click)="cartItemDel(cartItem.value['id'])"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
@@ -48,15 +48,11 @@
     </tbody>
   </table>
   <div class="mt-5">
-    <h6 class="font-weight-bold text-primary">
-      totalCach: {{ totalCash | currency: "EGY" }}
-    </h6>
+    <h6 class="cart__total">totalCach: {{ totalCash | currency: "EGY" }}</h6>
   </div>
 </div>
-<ng-template class="text-danger text-center" #elseBlock>
+<ng-template class="" #elseBlock>
   <div class="container">
-    <h3 class="text-danger text-center mt-5">
-      cart field is empty you can add to it!
-    </h3>
+    <div class="cart__empty">cart field is empty you can add to it!</div>
   </div>
 </ng-template>

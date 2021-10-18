@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { cardsList } from '../data';
-import { ProductsService } from '../products.service';
+import { ProductsService } from '../services/products.service';
 @Component({
   selector: 'app-single-card',
   templateUrl: './single-card.component.html',
   styleUrls: ['./single-card.component.scss'],
 })
 export class SingleCardComponent implements OnInit {
+  // TODO fixing singlecard.template.html -> length in the first line
   item: any;
   cartItemCounter: number;
   constructor(
@@ -22,15 +23,15 @@ export class SingleCardComponent implements OnInit {
   ngOnInit(): void {
     this.activeRouter.params.subscribe(
       (param) => {
-        this.productService
-          .getSingleProduct(param.id)
-          .subscribe((data: []) => (this.item = data));
+        this.productService.getSingleProduct(param.id).subscribe((data) => {
+          this.item = data;
+        });
       },
       (error) => {
-        console.log('error', error);
+        // console.error(error);
       },
       () => {
-        console.log('complete', 'you are complete');
+        // console.warn('complete', 'you are complete');
       }
     );
     this.productService.cartItemsCounter.subscribe(

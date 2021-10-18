@@ -1,0 +1,26 @@
+.navbar {
+  background: #f1f6f9;
+  .navbar-brand {
+    color: #14274e;
+    font-family: monospace;
+    font-weight: bold;
+  }
+  .nav-link {
+    color: #14274e;
+    font-weight: 400;
+    margin-right: 1rem;
+    font-size: 1.22rem;
+  }
+  .cart-link {
+    margin-right: 0.2rem;
+  }
+  .red {
+    color: var(--red);
+  }
+  .blue {
+    color: var(--blue);
+  }
+  .sec {
+    color: var(--sec);
+  }
+}

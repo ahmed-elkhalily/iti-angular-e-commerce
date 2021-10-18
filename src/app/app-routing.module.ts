@@ -1,3 +1,5 @@
+import { AuthGuardService } from './guards/auth-guard.service';
+import { WishlistComponent } from './wishlist/wishlist.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 // components
@@ -26,6 +28,12 @@ const routes: Routes = [
   {
     path: 'cart',
     component: CartComponent,
+    canActivate: [],
+  },
+  {
+    path: 'wishlist',
+    component: WishlistComponent,
+    canActivate: [AuthGuardService],
   },
 ];
 

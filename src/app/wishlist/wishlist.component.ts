@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { RemoveFromWishListAction } from '../store/wishlist/wishlist.action';
-import { wishListReducer } from '../store/wishlist/wishlist.reducer';
 
 @Component({
   selector: 'app-wishlist',
@@ -10,10 +9,14 @@ import { wishListReducer } from '../store/wishlist/wishlist.reducer';
 })
 export class WishlistComponent implements OnInit {
   wishList: Array<any>;
+  wishListQuant: number;
   constructor(private store: Store<any>) {}
 
   ngOnInit(): void {
-    this.store.select('wishList').subscribe((data) => (this.wishList = data));
+    this.store.select('wishList').subscribe((data) => {
+      this.wishList = data;
+      this.wishListQuant = data.length;
+    });
   }
   removeFromWishItems(id: number) {
     this.store.dispatch(new RemoveFromWishListAction(id));

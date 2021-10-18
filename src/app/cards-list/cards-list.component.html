@@ -1,12 +1,10 @@
-<div class="container">
-  <div class="row">
-    <div class="w-75 row">
-      <div *ngFor="let card of productListItems">
+<section class="cards">
+  <div class="container">
+    <div class="cards__container">
+      <div class="cards__item" *ngFor="let card of productListItems">
         <app-card [productItems]="card"></app-card>
       </div>
     </div>
-    <div class="w-25">
-      <app-wishlist></app-wishlist>
-    </div>
   </div>
-</div>
+</section>
+<app-spinner></app-spinner>

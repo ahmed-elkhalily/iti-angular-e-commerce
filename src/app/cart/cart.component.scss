@@ -1,6 +1,49 @@
+.cart__empty {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: -1;
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: var(--blue-link);
+}
+.cart__total {
+  position: absolute;
+  bottom: 5%;
+  right: 50%;
+  transform: translateX(50%);
+  font-size: 2rem;
+  color: var(--blue-link);
+}
 svg {
   fill: currentColor;
   path {
-    color: #fff;
+    color: var(--sec);
+  }
+}
+
+.cart__btn {
+  background: transparent;
+  border-radius: 50%;
+  border: 1px solid;
+  &-icon {
+    border: none;
+    path {
+      color: var(--red-alert);
+    }
+  }
+  color: var(--red-alert);
+  &.red {
+    color: var(--red-alert);
+    border-color: var(--red-alert);
+  }
+  &.blue {
+    border-color: var(--blue);
+    color: var(--blue);
   }
 }

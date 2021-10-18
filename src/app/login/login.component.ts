@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class LoginComponent implements OnInit {
   constructor() {}
   onUserSubmit(values: any) {
-    console.log(values);
+    localStorage.setItem('email', JSON.stringify(values.value));
   }
 
   ngOnInit(): void {}

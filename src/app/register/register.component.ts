@@ -71,11 +71,8 @@ export class RegisterComponent implements OnInit {
         city: ['', [Validators.required, Validators.pattern('^([^0-9]*)$')]],
       })
     );
-    console.log(this.registerUser.get('addressForm'));
-    console.log(this.registerUser.value);
   }
   registerFormSubmit(value: any) {
-    console.log(value);
     if (value.valid) {
       alert('hi there thank you ya ahmed');
     }

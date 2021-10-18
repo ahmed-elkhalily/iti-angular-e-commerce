@@ -8,8 +8,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'cards';
-  // constructor(private store: Store<any>) {}
-  // ngOnInit(): void {
-  //   this.store.select('wishList').subscribe((data) => console.log(data));
-  // }
 }

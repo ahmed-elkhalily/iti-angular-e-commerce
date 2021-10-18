@@ -1,6 +1,13 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg">
   <div class="container-fluid">
-    <a class="navbar-brand" routerLink="/">Home</a>
+    <a class="navbar-brand" routerLink="/">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+        <path
+          d="M10 9V7.902L11.047 3h1.905L14 7.9v1.098C14 10.065 13.067 11 12 11s-2-.933-2-2zm5 0c0 1.067.934 2 2.001 2S19 10.167 19 9.1V8.002L16.004 3h-1.943L15 7.902V9zM5 9.068C5 10.135 5.933 11 7 11s2-.865 2-1.932V7.971L9.939 3H7.996L5 7.971v1.097zM1 12h22v12H1V12zm2 8h18v-6H3v6zM4 9.068V7.971L6.887 3H4.873L0 7.971v1.098C0 10.135.933 11 2 11s2-.865 2-1.932zM19.127 3h-2.014L20 7.902V9c0 1.067.933 2 2 2s2-.865 2-1.932V7.971L19.127 3zM19 0H5v2h14V0z"
+        />
+      </svg>
+      AmCommerce.
+    </a>
     <button
       class="navbar-toggler"
       type="button"
@@ -15,7 +22,12 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" routerLink="cart">
+          <a
+            class="nav-link cart-link"
+            [ngClass]="cartItemCounter > 0 ? 'blue' : 'sec'"
+            aria-current="page"
+            routerLink="cart"
+          >
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
               <path
                 d="M10 19.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm3.5-1.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm1.336-5 1.977-7H0l2.938 7h11.898zm4.969-10-3.432 12H3.776l.839 2h13.239l3.474-12h1.929L24 3h-4.195z"
@@ -25,13 +37,24 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+          <a
+            class="nav-link wishlist-link"
+            [ngClass]="wishListCounter > 0 ? 'red' : 'sec'"
+            routerLink="wishlist"
+          >
+            <svg
+              width="24"
+              height="24"
+              xmlns="http://www.w3.org/2000/svg"
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+            >
               <path
-                d="M15.653 19.415C14.491 20.556 13.264 21.746 12 23 5.57 16.619 0 11.853 0 7.192 0 3.187 3.098 1 6.281 1 8.478 1 10.715 2.042 12 4.248c1.279-2.195 3.521-3.238 5.726-3.238C20.903 1.01 24 3.181 24 7.192c0 1.269-.424 2.546-1.154 3.861l-1.483-1.484c.403-.836.637-1.631.637-2.377 0-2.873-2.216-4.182-4.274-4.182-3.257 0-4.976 3.475-5.726 5.021-.747-1.54-2.484-5.03-5.72-5.031C3.965 2.999 2 4.516 2 7.192c0 3.442 4.742 7.85 10 13l2.239-2.191 1.414 1.414zM23 14h-3v-3h-2v3h-3v2h3v3h2v-3h3v-2z"
+                d="M12 21.593C6.37 16.054 1 11.296 1 7.191 1 3.4 4.068 2 6.281 2c1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447C20.266 2.01 23 3.631 23 7.191c0 4.069-5.136 8.625-11 14.402M17.726 1.01c-2.203 0-4.446 1.042-5.726 3.238C10.715 2.042 8.478 1 6.281 1 3.098 1 0 3.187 0 7.191 0 11.852 5.571 16.62 12 23c6.43-6.38 12-11.148 12-15.809 0-4.011-3.095-6.181-6.274-6.181"
               />
             </svg>
-            0
+
+            {{ wishListCounter }}
           </a>
         </li>
         <li class="nav-item">
