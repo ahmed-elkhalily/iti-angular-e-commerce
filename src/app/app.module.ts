@@ -13,7 +13,6 @@ import { SingleCardComponent } from './single-card/single-card.component';
 import { CartComponent } from './cart/cart.component';
 import { AppReducer } from './store/store.reducer';
 import { WishlistComponent } from './wishlist/wishlist.component';
-import { AuthonticationModule } from './authontication/authontication.module';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { SliceStringPipe } from './pipes/slice-string.pipe';
 import { CurrencyPipe } from './pipes/currency.pipe';
