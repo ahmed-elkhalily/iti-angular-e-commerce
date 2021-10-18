@@ -18,10 +18,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
 import { SliceStringPipe } from './pipes/slice-string.pipe';
 import { CurrencyPipe } from './pipes/currency.pipe';
 //services
-
-import { ProductsService } from './services/products.service';
-
-// import { SharedModule } from './shared/shared/shared.module';
+import { SharedModule } from './shared/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -40,7 +37,7 @@ import { ProductsService } from './services/products.service';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    AuthonticationModule,
+    SharedModule,
     StoreModule.forRoot(AppReducer),
   ],
   providers: [

@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @NgModule({
-  declarations: [AuthonticationModule],
-  imports: [CommonModule,],
+  declarations: [],
+  imports: [CommonModule, AuthonticationModule],
   exports: [AuthonticationModule],
-)
+})
 export class SharedModule {}

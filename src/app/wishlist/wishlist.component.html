@@ -20,8 +20,11 @@
             <div class="card-body">
               <h5 class="card-title">{{ item.title }}</h5>
               <p>{{ item.description | sliceString: 70 }}</p>
-              <div>
-                <button (click)="removeFromWishItems(item.id)">
+              <div class="buttons">
+                <button
+                  class="btn__remove red"
+                  (click)="removeFromWishItems(item.id)"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"

@@ -52,13 +52,13 @@ export class ProductsService {
       ...obj,
     });
     if (newCartCounter == 1) {
-      console.log(newCartCounter);
-      totalCach = obj[itemIndex]['totalPrice'];
+      totalCach = obj[itemIndex]['price'];
       this.TotalCash.next(totalCach);
     } else {
       totalCach = this.TotalCash.getValue();
-      totalCach += obj[itemIndex]['totalPrice'];
-      this.TotalCash.next(totalCach);
+      totalCach += obj[itemIndex]['price'];
+      let userTotalCach: number = totalCach;
+      this.TotalCash.next(+userTotalCach);
     }
   }
 
@@ -66,6 +66,7 @@ export class ProductsService {
     let obj = {};
     let cartCounter = this.cartCounter.getValue();
     obj = this.cartItems.getValue();
+
     if (inc) {
       obj[id].quantity++;
       cartCounter++;
@@ -82,9 +83,10 @@ export class ProductsService {
       obj[id].quantity--;
       this.TotalCash.next(this.TotalCash.getValue() - obj[id].price);
     }
-
-    obj[id].totalPrice = obj[id].price * obj[id].quantity;
-    this.cartItems.next(obj);
+    if (obj[id]) {
+      obj[id].totalPrice = obj[id].price * obj[id].quantity;
+      this.cartItems.next(obj);
+    }
   }
   quantityInc(id: number) {
     this.innerTotalPriceAndQuantity(id);

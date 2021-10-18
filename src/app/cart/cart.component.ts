@@ -8,7 +8,7 @@ import { ProductsService } from '../services/products.service';
 })
 export class CartComponent implements OnInit {
   cartItems: [];
-  totalCash: number;
+  totalCash: any;
   constructor(private productService: ProductsService) {}
   quantityInc(id: number) {
     this.productService.quantityInc(id);
@@ -23,6 +23,8 @@ export class CartComponent implements OnInit {
     this.productService.cartItemsList.subscribe((items: []) => {
       this.cartItems = items;
     });
-    this.productService.TotalCash.subscribe((item) => (this.totalCash = item));
+    this.productService.TotalCash.subscribe(
+      (item): number => (this.totalCash = item)
+    );
   }
 }

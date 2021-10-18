@@ -13,6 +13,7 @@ import {
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
+  addressForm: any;
   registerUser: FormGroup;
   constructor(private fb: FormBuilder) {}
   matchingPasswordsField(form: FormGroup) {
@@ -50,8 +51,8 @@ export class RegisterComponent implements OnInit {
     return this.registerUser.controls;
   }
   addProduct(): void {
-    let addressForm = this.registerUser.get('addressForm') as FormArray;
-    addressForm.push(
+    this.addressForm = this.registerUser.get('addressForm') as FormArray;
+    this.addressForm.push(
       this.fb.group({
         address: [
           '',
@@ -76,5 +77,8 @@ export class RegisterComponent implements OnInit {
     if (value.valid) {
       alert('hi there thank you ya ahmed');
     }
+  }
+  removeAdressForm(id: number):void {
+    this.addressForm.removeAt(id)
   }
 }

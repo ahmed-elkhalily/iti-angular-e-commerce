@@ -48,7 +48,9 @@
     </tbody>
   </table>
   <div class="mt-5">
-    <h6 class="cart__total">totalCach: {{ totalCash | currency: "EGY" }}</h6>
+    <h6 class="cart__total">
+      totalCach: {{ totalCash | number: "1.0-3" }} <strong>EGY</strong>
+    </h6>
   </div>
 </div>
 <ng-template class="" #elseBlock>
